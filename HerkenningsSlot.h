@@ -10,7 +10,7 @@ public:
     HerkenningsSlot();
     void ontgrendel(string);
     void vergrendel();
-    bool isVergrendeld();
+    bool isVergrendeld() const;
     void voegAutorisatieToe(string naam, bool toegang);
     void toonKaartenbak(Afdrukker eenAfdrukker);
 

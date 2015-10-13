@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     appelslot = new Sleutelslot("appel");
     banaanslot = new Sleutelslot("banaan");
     citroenslot = new Codeslot(1337);
+    dadelslot = new HerkenningsSlot();
     HallSensor1 = new HallSensor(490, 80);
     Deur1 = new Schuifdeur(ui->Deur_1, HallSensor1);
     Deur1->monteerExtraSlot(appelslot);
@@ -48,7 +49,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::clearsleutels(){
-    for(unsigned int i = 0; i < 3 /*size of sleutels*/; i++){
+    for(unsigned int i = 0; i < 4 /*size of sleutels*/; i++){
         sleutel[i] = "";
     }
 }
@@ -57,6 +58,7 @@ void MainWindow::ontgrendelSloten(){
     appelslot->ontgrendel(sleutel[0]);
     banaanslot->ontgrendel(sleutel[1]);
     citroenslot->ontgrendel(sleutel[2]);
+    dadelslot->ontgrendel(sleutel[3]);
 }
 
 void MainWindow::on_Deur_1_Button_clicked(){
@@ -120,4 +122,14 @@ void MainWindow::on_SlotDeur_2_returnPressed(){
 void MainWindow::on_SlotDeur_3_returnPressed(){
     sleutel[2] = ui->SlotDeur_3->text().toStdString();
     ui->SlotDeur_3->setText("");
+}
+
+void MainWindow::on_AllowButton_clicked(){
+    dadelslot->voegAutorisatieToe(ui->nameField->text().toStdString(), true);
+    ui->nameField->setText("");
+}
+
+void MainWindow::on_BanButton_clicked(){
+    dadelslot->voegAutorisatieToe(ui->nameField->text().toStdString(), false);
+    ui->nameField->setText("");
 }

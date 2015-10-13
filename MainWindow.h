@@ -10,6 +10,7 @@
 #include "Sleutelslot.h"
 #include "codeslot.h"
 #include "slot.h"
+#include "HerkenningsSlot.h"
 
 using namespace std;
 
@@ -43,6 +44,10 @@ private slots:
 
     void on_SlotDeur_3_returnPressed();
 
+    void on_AllowButton_clicked();
+
+    void on_BanButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Schuifdeur *Deur1;
@@ -52,7 +57,8 @@ private:
     Sleutelslot *appelslot;
     Sleutelslot *banaanslot;
     Codeslot *citroenslot;
-    string sleutel[3];
+    HerkenningsSlot *dadelslot;
+    string sleutel[4];
 };
 
 #endif // MAINWINDOW_H
